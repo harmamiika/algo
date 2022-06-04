@@ -32,3 +32,25 @@ function binarySearch(sortedArray, value) {
   }
   return -1;
 }
+
+function stringSearch(string, substring) {
+  let counter = 0;
+  for (let i = 0; i < string.length; i++) {
+    let j = 0;
+    let isMatching = true;
+    while (j < substring.length && isMatching) {
+      if (substring[j] !== string[i + j]) isMatching = false;
+      if (j === substring.length - 1 && isMatching) counter++;
+      j++;
+    }
+  }
+  return counter;
+}
+// can also use break; => to break out of for loop
+
+const valye = stringSearch(
+  'moimoimoiasdasddsasadadsd fdsgdgjsdljgskjglkg miika miika',
+  'miika'
+);
+
+console.log(valye);
