@@ -33,5 +33,5 @@ function bubbleSort(array) {
   return array;
 }
 
-const bubble = bubbleSort([1, 5, 69, 420, 42, 100, 999, 26]);
+const bubble = bubbleSort([69, 1, 5, 420, 42, 100, 999, 26]);
 console.log(bubble, 'bubblesorted array');
