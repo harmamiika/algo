@@ -115,6 +115,38 @@ class SinglyLinkedList {
     }
     return true;
   }
+
+  remove(position) {
+    if (position > this.length || position < 0) return false;
+    if (position === this.length - 1) return this.pop();
+    if (position === 0) return this.shift();
+
+    let previusNode = get(position - 1);
+    const removedNode = previusNode.next;
+    previusNode.next = previusNode.next.next;
+    this.length--;
+    return removedNode;
+  }
+
+  reverse() {
+    if (!this.head) return undefined;
+
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    var next;
+    var prev = null;
+
+    while (node.next) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+
+    return this;
+  }
 }
 
 var list = new SinglyLinkedList();
@@ -136,3 +168,5 @@ list.insert(2, 'nalle');
 console.log(list.get(2));
 
 console.log(list, 'list');
+
+console.log(list.reverse());
