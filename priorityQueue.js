@@ -1,22 +1,18 @@
-// heaps = trees
-// MAX Binary heap = parent bigger than children, 2 nodes
-// Priority queue on yleinen implementaatio, graph traversal myös
+class Node {
+  constructor(val, priority) {
+    this.val = val;
+    this.priority = priority;
+  }
+}
 
-// HEAP täyttyy aina riveittäin, vasemmalta
-
-// voidaaaan storee arrayssa
-// parentin child = 2n + 1, 2n + 2
-// childin parent = Math.floor((n-1)/2)
-
-class BinaryHeap {
+class PriorityQueue {
   constructor() {
     this.values = [];
   }
 
-  // add to end
-  // bubble up
-  insert(val) {
-    this.values.push(val);
+  enqueue(val, priority) {
+    let newNode = new Node(val, priority);
+    this.values.push(newNode);
     this.bubbleUp();
   }
 
@@ -25,7 +21,7 @@ class BinaryHeap {
     let parentIndex = Math.floor((childIndex - 1) / 2);
     while (
       childIndex > 0 &&
-      this.values[parentIndex] < this.values[childIndex]
+      this.values[parentIndex].priority > this.values[childIndex].priority
     ) {
       const temp = this.values[parentIndex];
       this.values[parentIndex] = this.values[childIndex];
@@ -35,14 +31,14 @@ class BinaryHeap {
     }
   }
 
-  extractMax() {
-    const max = this.values[0];
+  dequeue() {
+    const min = this.values[0];
     const end = this.values.pop();
     if (this.values.length > 0) {
       this.values[0] = end;
       this.sinkDown();
     }
-    return max;
+    return min;
   }
 
   sinkDown() {
@@ -58,7 +54,7 @@ class BinaryHeap {
 
       if (leftChildIndex < length) {
         leftChild = this.values[leftChildIndex];
-        if (leftChild > element) {
+        if (leftChild.priority < element.priority) {
           swapIndex = leftChildIndex;
         }
       }
@@ -66,8 +62,8 @@ class BinaryHeap {
       if (rightChildIndex < length) {
         rightChild = this.values[rightChildIndex];
         if (
-          (swapIndex === null && rightChild > element) ||
-          (swapIndex !== null && rightChild > leftChild)
+          (swapIndex === null && rightChild.priority < element.priority) ||
+          (swapIndex !== null && rightChild.priority < leftChild.priority)
         ) {
           swapIndex = rightChildIndex;
         }
@@ -82,12 +78,15 @@ class BinaryHeap {
   }
 }
 
-const heap = new BinaryHeap();
-heap.insert(1);
-heap.insert(2);
-heap.insert(3);
-heap.insert(4);
+const heap = new PriorityQueue();
+heap.enqueue('pelel', 1);
+heap.enqueue('lakaaka', 2);
+heap.enqueue('jodadas,', 3);
+heap.enqueue('penis rikki,', 5);
 
-heap.extractMax();
+console.log(heap.dequeue());
+console.log(heap.dequeue());
+console.log(heap.dequeue());
+console.log(heap.dequeue());
 
 console.log(heap);
