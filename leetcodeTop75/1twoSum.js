@@ -8,12 +8,12 @@ function twoSum(nums, target) {
     else visited[nums[i]] = i;
   }
 
-  nums.forEach((el, i) => {
-    const diff = target - el;
-    if (visited[diff] !== undefined) {
-      return [i, visited[diff]];
-    } else visited[el] = i;
-  });
+  // nums.forEach((el, i) => {
+  //   const diff = target - el;
+  //   if (visited[diff] !== undefined) {
+  //     return [i, visited[diff]];
+  //   } else visited[el] = i;
+  // });
 }
 
 console.log(twoSum([1, 2, 3, 69, 243, 33], 34));
