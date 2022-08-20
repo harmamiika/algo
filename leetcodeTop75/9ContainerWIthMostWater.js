@@ -1,0 +1,1 @@
+var maxArea = function (height) {};
