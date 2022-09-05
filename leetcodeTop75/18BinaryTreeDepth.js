@@ -15,3 +15,26 @@ var maxDepth = function (root) {
   if (!root) return 0;
   return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
 };
+x;
+// BFS POSSBLE WITH QUEUE
+
+// DFS WITH STACK
+var maxDepth = function (root) {
+  if (!root) return 0;
+
+  let max = 1;
+  const stack = [[root, 1]];
+  while (stack.length) {
+    const current = stack.pop();
+    const node = current[0];
+    const depth = current[1];
+
+    if (node) {
+      max = Math.max(max, depth);
+      stack.unshift([node.left, depth + 1]);
+      stack.unshift([node.right, depth + 1]);
+    }
+  }
+
+  return max;
+};
