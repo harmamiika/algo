@@ -13,6 +13,17 @@ var reverseList = function (head) {
 };
 
 var reverseList = function (head) {
+  let [current, prev] = [head, null];
+  while (current) {
+    const temp = current.next;
+    current.next = prev;
+    prev = current;
+    current = temp;
+  }
+  return prev;
+};
+
+var reverseList = function (head) {
   if (!head) return null;
   newHead = head;
   if (head.next) {
