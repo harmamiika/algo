@@ -30,6 +30,28 @@ var maxDepth = function (root) {
     const node = current[0];
     const depth = current[1];
 
+    // addaa maxin vaan, jossei null
+    if (node) {
+      max = Math.max(max, depth);
+      stack.push([node.left, depth + 1]);
+      stack.push([node.right, depth + 1]);
+    }
+  }
+
+  return max;
+};
+
+// queue
+var maxDepth = function (root) {
+  if (!root) return 0;
+
+  let max = 1;
+  const stack = [[root, 1]];
+  while (stack.length) {
+    const current = stack.pop();
+    const node = current[0];
+    const depth = current[1];
+
     if (node) {
       max = Math.max(max, depth);
       stack.unshift([node.left, depth + 1]);
