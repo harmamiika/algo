@@ -1,7 +1,6 @@
 // o(n)
 
-// SHORTED - BETTER (M)
-
+// SHORTER - BETTER (M)
 var removeNthFromEnd = function (head, n) {
   const dummy = { next: head };
   let left = dummy;
