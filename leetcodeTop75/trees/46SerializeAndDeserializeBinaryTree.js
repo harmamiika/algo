@@ -1,4 +1,4 @@
-var serialize = function (root, res = []) {
+var serialize = function (root) {
   let res = [];
 
   function dfs(node) {
@@ -31,7 +31,7 @@ function deserialize(data) {
     return node;
   }
 
-  return dfs;
+  return dfs();
 }
 
 // var serialize = function (root, res = []) {
