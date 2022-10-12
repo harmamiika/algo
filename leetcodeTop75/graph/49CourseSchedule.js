@@ -4,11 +4,6 @@ var canFinish = function (numCourses, prerequisites) {
   let seen = new Set();
   let seeing = new Set();
 
-  for (let i = 0; i < numCourses; i++) {
-    if (!explore(i)) return false;
-  }
-  return true;
-
   function explore(course) {
     if (seen.has(course)) return true;
     if (seeing.has(course)) return false;
@@ -22,6 +17,11 @@ var canFinish = function (numCourses, prerequisites) {
     seeing.delete(course);
     return true;
   }
+
+  for (let i = 0; i < numCourses; i++) {
+    if (!explore(i)) return false;
+  }
+  return true;
 };
 
 function createGraph(numCourses, edges) {
